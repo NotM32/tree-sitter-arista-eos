@@ -1,0 +1,38 @@
+{
+  "grammars": [
+    {
+      "name": "arista_eos",
+      "camelcase": "AristaEOS",
+      "scope": "source.arista_eos",
+      "file-types": [
+        ".ios",
+        ".eos",
+        ".startup_config"
+      ],
+      "injection-regex": "^arista_eos$"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "GPL",
+    "description": "Grammars for FRR, Arista EOS, Cisco iOS/NXOS style network configuration files",
+    "authors": [
+      {
+        "name": "m32",
+        "email": "m32@m32.io",
+        "url": "https://m32.io/"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/notm32/tree-sitter-arista-eos"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true
+  }
+}

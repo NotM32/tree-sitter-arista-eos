@@ -15,8 +15,8 @@
           buildInputs = [
             pkgs.tree-sitter
             pkgs.nodejs
-            pkgs.node-gyp
             pkgs.gcc
+            pkgs.cargo
           ];
         };
       };
