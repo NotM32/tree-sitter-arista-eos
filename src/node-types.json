@@ -1,0 +1,1754 @@
+[
+  {
+    "type": "aaa_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "command_args",
+          "named": true
+        },
+        {
+          "type": "command_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "acl_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "command_name",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "bgp_asn",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "class_map_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "command_name",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "command",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "command_access_list",
+          "named": true
+        },
+        {
+          "type": "command_hostname",
+          "named": true
+        },
+        {
+          "type": "command_interface",
+          "named": true
+        },
+        {
+          "type": "command_ip",
+          "named": true
+        },
+        {
+          "type": "command_ipv6",
+          "named": true
+        },
+        {
+          "type": "command_ntp",
+          "named": true
+        },
+        {
+          "type": "command_route_map",
+          "named": true
+        },
+        {
+          "type": "command_router_bgp",
+          "named": true
+        },
+        {
+          "type": "command_tacacs_server",
+          "named": true
+        },
+        {
+          "type": "command_username",
+          "named": true
+        },
+        {
+          "type": "command_vlan",
+          "named": true
+        },
+        {
+          "type": "command_vrf",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "command_access_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "command_args",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "command_hostname",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "command_interface",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "command_args",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "command_ip",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "command_args",
+          "named": true
+        },
+        {
+          "type": "protocol_options",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "command_ipv6",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "command_args",
+          "named": true
+        },
+        {
+          "type": "protocol_options",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "command_ntp",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "command_args",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "command_route_map",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "command_args",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "route_map_action",
+          "named": true
+        },
+        {
+          "type": "sequence",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "command_router_bgp",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "command_args",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "command_tacacs_server",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "command_args",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "command_username",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "command_args",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "command_vlan",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "command_args",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "command_vrf",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "command_args",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "header_comment",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "interface_command",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "interface_command_description",
+          "named": true
+        },
+        {
+          "type": "interface_command_ip",
+          "named": true
+        },
+        {
+          "type": "interface_command_ipv6",
+          "named": true
+        },
+        {
+          "type": "interface_command_shutdown",
+          "named": true
+        },
+        {
+          "type": "interface_command_switchport",
+          "named": true
+        },
+        {
+          "type": "interface_command_vrf",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "interface_command_description",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "command_args",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "interface_command_ip",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "command_args",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "interface_command_ipv6",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "command_args",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "interface_command_shutdown",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "interface_command_switchport",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "command_args",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "interface_command_vrf",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "interface_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "command_args",
+          "named": true
+        },
+        {
+          "type": "command_name",
+          "named": true
+        },
+        {
+          "type": "interface_command",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "negated_interface_command",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ip_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "command_args",
+          "named": true
+        },
+        {
+          "type": "command_name",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ipv6_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "command_args",
+          "named": true
+        },
+        {
+          "type": "command_name",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "key_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "command_name",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "management_api_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "command_name",
+          "named": true
+        },
+        {
+          "type": "management_api_vrf_section",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "management_api_vrf_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "command_name",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "management_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "command_args",
+          "named": true
+        },
+        {
+          "type": "command_name",
+          "named": true
+        },
+        {
+          "type": "management_api_section",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "monitor_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "command_name",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "negated_command",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "command",
+          "named": true
+        },
+        {
+          "type": "command_args",
+          "named": true
+        },
+        {
+          "type": "command_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "negated_interface_command",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "interface_command",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ntp_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "command_args",
+          "named": true
+        },
+        {
+          "type": "command_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "policy_map_class_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "command_name",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "policy_map_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "command_name",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "policy_map_class_section",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "protocol_options",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "route_map_action",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "route_map_command",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "route_map_command_description",
+          "named": true
+        },
+        {
+          "type": "route_map_command_match",
+          "named": true
+        },
+        {
+          "type": "route_map_command_set",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "route_map_command_description",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "command_args",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "route_map_command_match",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "command_args",
+          "named": true
+        },
+        {
+          "type": "route_map_match_condition",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "route_map_command_set",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "command_args",
+          "named": true
+        },
+        {
+          "type": "route_map_set_action",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "route_map_match_condition",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "route_map_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "route_map_action",
+          "named": true
+        },
+        {
+          "type": "route_map_command",
+          "named": true
+        },
+        {
+          "type": "sequence",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "route_map_set_action",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "router_bgp_command",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "router_bgp_command_neighbor",
+          "named": true
+        },
+        {
+          "type": "router_bgp_command_network",
+          "named": true
+        },
+        {
+          "type": "router_bgp_command_redistribute",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "router_bgp_command_neighbor",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "bgp_neighbor",
+          "named": true
+        },
+        {
+          "type": "command_args",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "router_bgp_command_network",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "command_args",
+          "named": true
+        },
+        {
+          "type": "ip_prefix",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "router_bgp_command_redistribute",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "command_args",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "router_bgp_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "bgp_asn",
+          "named": true
+        },
+        {
+          "type": "command_args",
+          "named": true
+        },
+        {
+          "type": "command_name",
+          "named": true
+        },
+        {
+          "type": "router_bgp_command",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "router_ospf_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "command_args",
+          "named": true
+        },
+        {
+          "type": "command_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "aaa_section",
+          "named": true
+        },
+        {
+          "type": "acl_section",
+          "named": true
+        },
+        {
+          "type": "class_map_section",
+          "named": true
+        },
+        {
+          "type": "interface_section",
+          "named": true
+        },
+        {
+          "type": "ip_section",
+          "named": true
+        },
+        {
+          "type": "ipv6_section",
+          "named": true
+        },
+        {
+          "type": "key_section",
+          "named": true
+        },
+        {
+          "type": "management_section",
+          "named": true
+        },
+        {
+          "type": "monitor_section",
+          "named": true
+        },
+        {
+          "type": "ntp_section",
+          "named": true
+        },
+        {
+          "type": "policy_map_section",
+          "named": true
+        },
+        {
+          "type": "route_map_section",
+          "named": true
+        },
+        {
+          "type": "router_bgp_section",
+          "named": true
+        },
+        {
+          "type": "router_ospf_section",
+          "named": true
+        },
+        {
+          "type": "service_section",
+          "named": true
+        },
+        {
+          "type": "snmp_server_section",
+          "named": true
+        },
+        {
+          "type": "spanning_tree_section",
+          "named": true
+        },
+        {
+          "type": "tacacs_server_section",
+          "named": true
+        },
+        {
+          "type": "vlan_section",
+          "named": true
+        },
+        {
+          "type": "vrf_section",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "sequence",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "service_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "command_args",
+          "named": true
+        },
+        {
+          "type": "command_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "snmp_server_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "command_args",
+          "named": true
+        },
+        {
+          "type": "command_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "source_file",
+    "named": true,
+    "root": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "header_comment",
+          "named": true
+        },
+        {
+          "type": "section",
+          "named": true
+        },
+        {
+          "type": "statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "spanning_tree_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "command_args",
+          "named": true
+        },
+        {
+          "type": "command_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "command",
+          "named": true
+        },
+        {
+          "type": "command_args",
+          "named": true
+        },
+        {
+          "type": "command_name",
+          "named": true
+        },
+        {
+          "type": "negated_command",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "tacacs_server_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "command_args",
+          "named": true
+        },
+        {
+          "type": "command_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "vlan_name",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "command_args",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "vlan_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "command_name",
+          "named": true
+        },
+        {
+          "type": "vlan_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "vrf_address_family_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "command_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "vrf_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "command_name",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "vrf_address_family_section",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "\n",
+    "named": false
+  },
+  {
+    "type": "!",
+    "named": false
+  },
+  {
+    "type": "aaa",
+    "named": false
+  },
+  {
+    "type": "access-list",
+    "named": false
+  },
+  {
+    "type": "address",
+    "named": false
+  },
+  {
+    "type": "address-family",
+    "named": false
+  },
+  {
+    "type": "aggregator",
+    "named": false
+  },
+  {
+    "type": "api",
+    "named": false
+  },
+  {
+    "type": "as-path",
+    "named": false
+  },
+  {
+    "type": "atomic-aggregate",
+    "named": false
+  },
+  {
+    "type": "authenticate",
+    "named": false
+  },
+  {
+    "type": "authentication-key",
+    "named": false
+  },
+  {
+    "type": "bgp_neighbor",
+    "named": true
+  },
+  {
+    "type": "chain",
+    "named": false
+  },
+  {
+    "type": "class",
+    "named": false
+  },
+  {
+    "type": "class-map",
+    "named": false
+  },
+  {
+    "type": "comm-list",
+    "named": false
+  },
+  {
+    "type": "command_args",
+    "named": true
+  },
+  {
+    "type": "command_name",
+    "named": true
+  },
+  {
+    "type": "comment",
+    "named": true
+  },
+  {
+    "type": "community",
+    "named": false
+  },
+  {
+    "type": "community-list",
+    "named": false
+  },
+  {
+    "type": "connected",
+    "named": false
+  },
+  {
+    "type": "console",
+    "named": false
+  },
+  {
+    "type": "contact",
+    "named": false
+  },
+  {
+    "type": "dampening",
+    "named": false
+  },
+  {
+    "type": "definition",
+    "named": false
+  },
+  {
+    "type": "deny",
+    "named": false
+  },
+  {
+    "type": "description",
+    "named": false
+  },
+  {
+    "type": "dhcp",
+    "named": false
+  },
+  {
+    "type": "domain",
+    "named": false
+  },
+  {
+    "type": "enable",
+    "named": false
+  },
+  {
+    "type": "end\n",
+    "named": false
+  },
+  {
+    "type": "extcommunity",
+    "named": false
+  },
+  {
+    "type": "extcommunity-list",
+    "named": false
+  },
+  {
+    "type": "extended",
+    "named": false
+  },
+  {
+    "type": "forwarding",
+    "named": false
+  },
+  {
+    "type": "group",
+    "named": false
+  },
+  {
+    "type": "host",
+    "named": false
+  },
+  {
+    "type": "hostname",
+    "named": false
+  },
+  {
+    "type": "http",
+    "named": false
+  },
+  {
+    "type": "http-commands",
+    "named": false
+  },
+  {
+    "type": "igmp",
+    "named": false
+  },
+  {
+    "type": "interface",
+    "named": false
+  },
+  {
+    "type": "ip",
+    "named": false
+  },
+  {
+    "type": "ip access-list",
+    "named": false
+  },
+  {
+    "type": "ip_prefix",
+    "named": true
+  },
+  {
+    "type": "ipv4",
+    "named": false
+  },
+  {
+    "type": "ipv6",
+    "named": false
+  },
+  {
+    "type": "ipv6 access-list",
+    "named": false
+  },
+  {
+    "type": "key",
+    "named": false
+  },
+  {
+    "type": "local-preference",
+    "named": false
+  },
+  {
+    "type": "local-proxy-arp",
+    "named": false
+  },
+  {
+    "type": "location",
+    "named": false
+  },
+  {
+    "type": "management",
+    "named": false
+  },
+  {
+    "type": "management api",
+    "named": false
+  },
+  {
+    "type": "match",
+    "named": false
+  },
+  {
+    "type": "match-any",
+    "named": false
+  },
+  {
+    "type": "metric",
+    "named": false
+  },
+  {
+    "type": "metric-type",
+    "named": false
+  },
+  {
+    "type": "mode",
+    "named": false
+  },
+  {
+    "type": "monitor",
+    "named": false
+  },
+  {
+    "type": "mroute",
+    "named": false
+  },
+  {
+    "type": "msdp",
+    "named": false
+  },
+  {
+    "type": "multicast",
+    "named": false
+  },
+  {
+    "type": "name",
+    "named": false
+  },
+  {
+    "type": "name",
+    "named": true
+  },
+  {
+    "type": "name-server",
+    "named": false
+  },
+  {
+    "type": "neighbor",
+    "named": false
+  },
+  {
+    "type": "network",
+    "named": false
+  },
+  {
+    "type": "no",
+    "named": false
+  },
+  {
+    "type": "no shutdown",
+    "named": false
+  },
+  {
+    "type": "ntp",
+    "named": false
+  },
+  {
+    "type": "origin",
+    "named": false
+  },
+  {
+    "type": "originator-id",
+    "named": false
+  },
+  {
+    "type": "ospf",
+    "named": false
+  },
+  {
+    "type": "permit",
+    "named": false
+  },
+  {
+    "type": "pim",
+    "named": false
+  },
+  {
+    "type": "policy-map",
+    "named": false
+  },
+  {
+    "type": "prefix-list",
+    "named": false
+  },
+  {
+    "type": "proxy-arp",
+    "named": false
+  },
+  {
+    "type": "redistribute",
+    "named": false
+  },
+  {
+    "type": "replication",
+    "named": false
+  },
+  {
+    "type": "route",
+    "named": false
+  },
+  {
+    "type": "route-map",
+    "named": false
+  },
+  {
+    "type": "route-type",
+    "named": false
+  },
+  {
+    "type": "router",
+    "named": false
+  },
+  {
+    "type": "router bgp",
+    "named": false
+  },
+  {
+    "type": "router ospf",
+    "named": false
+  },
+  {
+    "type": "routing",
+    "named": false
+  },
+  {
+    "type": "scp",
+    "named": false
+  },
+  {
+    "type": "security",
+    "named": false
+  },
+  {
+    "type": "server",
+    "named": false
+  },
+  {
+    "type": "service",
+    "named": false
+  },
+  {
+    "type": "session",
+    "named": false
+  },
+  {
+    "type": "set",
+    "named": false
+  },
+  {
+    "type": "shutdown",
+    "named": false
+  },
+  {
+    "type": "snmp-server",
+    "named": false
+  },
+  {
+    "type": "source-interface",
+    "named": false
+  },
+  {
+    "type": "source-protocol",
+    "named": false
+  },
+  {
+    "type": "spanning-tree",
+    "named": false
+  },
+  {
+    "type": "ssh",
+    "named": false
+  },
+  {
+    "type": "standard",
+    "named": false
+  },
+  {
+    "type": "static",
+    "named": false
+  },
+  {
+    "type": "switchport",
+    "named": false
+  },
+  {
+    "type": "tacacs",
+    "named": false
+  },
+  {
+    "type": "tacacs-server",
+    "named": false
+  },
+  {
+    "type": "tag",
+    "named": false
+  },
+  {
+    "type": "tcp",
+    "named": false
+  },
+  {
+    "type": "telnet",
+    "named": false
+  },
+  {
+    "type": "tftp",
+    "named": false
+  },
+  {
+    "type": "trap-source",
+    "named": false
+  },
+  {
+    "type": "trusted-key",
+    "named": false
+  },
+  {
+    "type": "unicast",
+    "named": false
+  },
+  {
+    "type": "user",
+    "named": false
+  },
+  {
+    "type": "username",
+    "named": false
+  },
+  {
+    "type": "verify",
+    "named": false
+  },
+  {
+    "type": "view",
+    "named": false
+  },
+  {
+    "type": "vlan",
+    "named": false
+  },
+  {
+    "type": "vrf",
+    "named": false
+  },
+  {
+    "type": "weight",
+    "named": false
+  }
+]

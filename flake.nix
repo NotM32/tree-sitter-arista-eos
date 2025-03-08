@@ -14,9 +14,10 @@
         devShells.default = pkgs.mkShell {
           buildInputs = [
             pkgs.tree-sitter
-            pkgs.nodejs
             pkgs.gcc
             pkgs.cargo
+            pkgs.nodejs
+            pkgs.yarn
           ];
         };
       };

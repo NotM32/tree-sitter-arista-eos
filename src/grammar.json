@@ -1,0 +1,2354 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
+  "name": "arista",
+  "rules": {
+    "source_file": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "header_comment"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "statement"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "section"
+              }
+            ]
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "end\n"
+        }
+      ]
+    },
+    "header_comment": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "!"
+                  },
+                  {
+                    "type": "PATTERN",
+                    "value": "[#!][ \\t]"
+                  }
+                ]
+              },
+              {
+                "type": "PATTERN",
+                "value": ".*"
+              },
+              {
+                "type": "STRING",
+                "value": "\n"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "comment": {
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "!"
+              },
+              {
+                "type": "PATTERN",
+                "value": "[#!][ \\t]"
+              }
+            ]
+          },
+          {
+            "type": "PATTERN",
+            "value": ".*"
+          },
+          {
+            "type": "STRING",
+            "value": "\n?"
+          }
+        ]
+      }
+    },
+    "statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "command"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "negated_command"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "command_name"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "command_args"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "command": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "command_access_list"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "command_hostname"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "command_interface"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "command_ip"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "command_ipv6"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "command_ntp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "command_router_bgp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "command_route_map"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "command_tacacs_server"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "command_username"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "command_vlan"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "command_vrf"
+        }
+      ]
+    },
+    "negated_command": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "no"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "command"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "command_name"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "command_args"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "command_name": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z0-9][-a-zA-Z0-9_]*"
+    },
+    "command_args": {
+      "type": "PATTERN",
+      "value": "[^!\\n]+"
+    },
+    "command_access_list": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "ip access-list"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "standard"
+            },
+            {
+              "type": "STRING",
+              "value": "extended"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "name"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "command_args"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "command_hostname": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "hostname"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "name"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "command_interface": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "interface"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "name"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "command_args"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "command_ip": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "ip"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "protocol_options"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "command_args"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "command_ipv6": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "ipv6"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "protocol_options"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "command_args"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "command_ntp": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "ntp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "command_args"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "command_router_bgp": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "router bgp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "command_args"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "command_route_map": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "route-map"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "name"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "route_map_action"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "sequence"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "command_args"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "command_tacacs_server": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "tacacs-server"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "command_args"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "command_username": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "username"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "name"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "command_args"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "command_vlan": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "vlan"
+        },
+        {
+          "type": "FIELD",
+          "name": "id",
+          "content": {
+            "type": "PATTERN",
+            "value": "\\d+"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "command_args"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "command_vrf": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "vrf"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "command_args"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "protocol_options": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "access-list"
+        },
+        {
+          "type": "STRING",
+          "value": "address"
+        },
+        {
+          "type": "STRING",
+          "value": "community-list"
+        },
+        {
+          "type": "STRING",
+          "value": "dhcp"
+        },
+        {
+          "type": "STRING",
+          "value": "domain"
+        },
+        {
+          "type": "STRING",
+          "value": "extcommunity-list"
+        },
+        {
+          "type": "STRING",
+          "value": "host"
+        },
+        {
+          "type": "STRING",
+          "value": "http"
+        },
+        {
+          "type": "STRING",
+          "value": "igmp"
+        },
+        {
+          "type": "STRING",
+          "value": "local-proxy-arp"
+        },
+        {
+          "type": "STRING",
+          "value": "mroute"
+        },
+        {
+          "type": "STRING",
+          "value": "msdp"
+        },
+        {
+          "type": "STRING",
+          "value": "multicast"
+        },
+        {
+          "type": "STRING",
+          "value": "name-server"
+        },
+        {
+          "type": "STRING",
+          "value": "ospf"
+        },
+        {
+          "type": "STRING",
+          "value": "pim"
+        },
+        {
+          "type": "STRING",
+          "value": "prefix-list"
+        },
+        {
+          "type": "STRING",
+          "value": "proxy-arp"
+        },
+        {
+          "type": "STRING",
+          "value": "route"
+        },
+        {
+          "type": "STRING",
+          "value": "router"
+        },
+        {
+          "type": "STRING",
+          "value": "routing"
+        },
+        {
+          "type": "STRING",
+          "value": "scp"
+        },
+        {
+          "type": "STRING",
+          "value": "ssh"
+        },
+        {
+          "type": "STRING",
+          "value": "tacacs"
+        },
+        {
+          "type": "STRING",
+          "value": "tcp"
+        },
+        {
+          "type": "STRING",
+          "value": "telnet"
+        },
+        {
+          "type": "STRING",
+          "value": "tftp"
+        },
+        {
+          "type": "STRING",
+          "value": "verify"
+        }
+      ]
+    },
+    "route_map_action": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "permit"
+        },
+        {
+          "type": "STRING",
+          "value": "deny"
+        }
+      ]
+    },
+    "sequence": {
+      "type": "PATTERN",
+      "value": "\\d+"
+    },
+    "name": {
+      "type": "PATTERN",
+      "value": "[-_.a-zA-Z0-9]+"
+    },
+    "interface_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "interface"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "name"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "command_args"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "interface_command"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "negated_interface_command"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "command_name"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "interface_command": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "interface_command_description"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "interface_command_ip"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "interface_command_ipv6"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "interface_command_shutdown"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "interface_command_switchport"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "interface_command_vrf"
+        }
+      ]
+    },
+    "negated_interface_command": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "no"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "interface_command"
+        }
+      ]
+    },
+    "interface_command_description": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "description"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "command_args"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "interface_command_ip": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "ip"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "command_args"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "interface_command_ipv6": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "ipv6"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "command_args"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "interface_command_shutdown": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "shutdown"
+            },
+            {
+              "type": "STRING",
+              "value": "no shutdown"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "interface_command_switchport": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "switchport"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "command_args"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "interface_command_vrf": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "vrf"
+        },
+        {
+          "type": "STRING",
+          "value": "forwarding"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "name"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "router_bgp_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "router bgp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "bgp_asn"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "command_args"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "router_bgp_command"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "command_name"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "router_bgp_command": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "router_bgp_command_neighbor"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "router_bgp_command_network"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "router_bgp_command_redistribute"
+        }
+      ]
+    },
+    "router_bgp_command_neighbor": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "neighbor"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "bgp_neighbor"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "command_args"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "router_bgp_command_network": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "network"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "ip_prefix"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "command_args"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "router_bgp_command_redistribute": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "redistribute"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "connected"
+            },
+            {
+              "type": "STRING",
+              "value": "ospf"
+            },
+            {
+              "type": "STRING",
+              "value": "static"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "command_args"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "route_map_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "route-map"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "name"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "route_map_action"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "sequence"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "route_map_command"
+          }
+        }
+      ]
+    },
+    "route_map_command": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "route_map_command_description"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "route_map_command_match"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "route_map_command_set"
+        }
+      ]
+    },
+    "route_map_command_description": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "description"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "command_args"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "route_map_command_match": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "match"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "route_map_match_condition"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "command_args"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "route_map_command_set": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "set"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "route_map_set_action"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "command_args"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "route_map_match_condition": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "as-path"
+        },
+        {
+          "type": "STRING",
+          "value": "community"
+        },
+        {
+          "type": "STRING",
+          "value": "extcommunity"
+        },
+        {
+          "type": "STRING",
+          "value": "interface"
+        },
+        {
+          "type": "STRING",
+          "value": "ip"
+        },
+        {
+          "type": "STRING",
+          "value": "ipv6"
+        },
+        {
+          "type": "STRING",
+          "value": "metric"
+        },
+        {
+          "type": "STRING",
+          "value": "origin"
+        },
+        {
+          "type": "STRING",
+          "value": "route-type"
+        },
+        {
+          "type": "STRING",
+          "value": "source-protocol"
+        },
+        {
+          "type": "STRING",
+          "value": "tag"
+        }
+      ]
+    },
+    "route_map_set_action": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "aggregator"
+        },
+        {
+          "type": "STRING",
+          "value": "as-path"
+        },
+        {
+          "type": "STRING",
+          "value": "atomic-aggregate"
+        },
+        {
+          "type": "STRING",
+          "value": "comm-list"
+        },
+        {
+          "type": "STRING",
+          "value": "community"
+        },
+        {
+          "type": "STRING",
+          "value": "dampening"
+        },
+        {
+          "type": "STRING",
+          "value": "extcommunity"
+        },
+        {
+          "type": "STRING",
+          "value": "ip"
+        },
+        {
+          "type": "STRING",
+          "value": "ipv6"
+        },
+        {
+          "type": "STRING",
+          "value": "local-preference"
+        },
+        {
+          "type": "STRING",
+          "value": "metric"
+        },
+        {
+          "type": "STRING",
+          "value": "metric-type"
+        },
+        {
+          "type": "STRING",
+          "value": "origin"
+        },
+        {
+          "type": "STRING",
+          "value": "originator-id"
+        },
+        {
+          "type": "STRING",
+          "value": "tag"
+        },
+        {
+          "type": "STRING",
+          "value": "weight"
+        }
+      ]
+    },
+    "section": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "aaa_section"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "acl_section"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "class_map_section"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "interface_section"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "ip_section"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "ipv6_section"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "key_section"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "management_section"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "monitor_section"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "ntp_section"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "policy_map_section"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "route_map_section"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "router_bgp_section"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "router_ospf_section"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "service_section"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "snmp_server_section"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "spanning_tree_section"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "tacacs_server_section"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "vlan_section"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "vrf_section"
+        }
+      ]
+    },
+    "bgp_asn": {
+      "type": "PATTERN",
+      "value": "\\d+"
+    },
+    "bgp_neighbor": {
+      "type": "PATTERN",
+      "value": "[.:a-fA-F0-9]+"
+    },
+    "ip_prefix": {
+      "type": "PATTERN",
+      "value": "\\d+\\.\\d+\\.\\d+\\.\\d+\\/\\d+"
+    },
+    "aaa_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "aaa"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "command_args"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "command_name"
+          }
+        }
+      ]
+    },
+    "acl_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "ip access-list"
+            },
+            {
+              "type": "STRING",
+              "value": "ipv6 access-list"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "standard"
+            },
+            {
+              "type": "STRING",
+              "value": "extended"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "name"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "command_name"
+          }
+        }
+      ]
+    },
+    "class_map_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "class-map"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "match-any"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "name"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "command_name"
+          }
+        }
+      ]
+    },
+    "ip_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "ip"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "access-list"
+            },
+            {
+              "type": "STRING",
+              "value": "community-list"
+            },
+            {
+              "type": "STRING",
+              "value": "prefix-list"
+            },
+            {
+              "type": "STRING",
+              "value": "route"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "name"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "command_args"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "command_name"
+          }
+        }
+      ]
+    },
+    "ipv6_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "ipv6"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "access-list"
+            },
+            {
+              "type": "STRING",
+              "value": "prefix-list"
+            },
+            {
+              "type": "STRING",
+              "value": "route"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "name"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "command_args"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "command_name"
+          }
+        }
+      ]
+    },
+    "key_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "key"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "chain"
+            },
+            {
+              "type": "STRING",
+              "value": "key"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "name"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "command_name"
+          }
+        }
+      ]
+    },
+    "management_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "management"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "api"
+            },
+            {
+              "type": "STRING",
+              "value": "console"
+            },
+            {
+              "type": "STRING",
+              "value": "security"
+            },
+            {
+              "type": "STRING",
+              "value": "ssh"
+            },
+            {
+              "type": "STRING",
+              "value": "telnet"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "command_args"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "command_name"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "management_api_section"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "management_api_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "management api"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "http-commands"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "command_name"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "management_api_vrf_section"
+        }
+      ]
+    },
+    "management_api_vrf_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "vrf"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "name"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "command_name"
+          }
+        }
+      ]
+    },
+    "monitor_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "monitor"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "session"
+            },
+            {
+              "type": "STRING",
+              "value": "replication"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "name"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "command_name"
+          }
+        }
+      ]
+    },
+    "ntp_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "ntp"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "authenticate"
+            },
+            {
+              "type": "STRING",
+              "value": "authentication-key"
+            },
+            {
+              "type": "STRING",
+              "value": "server"
+            },
+            {
+              "type": "STRING",
+              "value": "trusted-key"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "command_args"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "command_name"
+          }
+        }
+      ]
+    },
+    "policy_map_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "policy-map"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "name"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "command_name"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "policy_map_class_section"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "policy_map_class_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "class"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "name"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "command_name"
+          }
+        }
+      ]
+    },
+    "router_ospf_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "router ospf"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "command_args"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "command_name"
+          }
+        }
+      ]
+    },
+    "service_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "service"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "command_args"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "command_name"
+          }
+        }
+      ]
+    },
+    "snmp_server_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "snmp-server"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "community"
+            },
+            {
+              "type": "STRING",
+              "value": "contact"
+            },
+            {
+              "type": "STRING",
+              "value": "enable"
+            },
+            {
+              "type": "STRING",
+              "value": "group"
+            },
+            {
+              "type": "STRING",
+              "value": "host"
+            },
+            {
+              "type": "STRING",
+              "value": "location"
+            },
+            {
+              "type": "STRING",
+              "value": "source-interface"
+            },
+            {
+              "type": "STRING",
+              "value": "trap-source"
+            },
+            {
+              "type": "STRING",
+              "value": "user"
+            },
+            {
+              "type": "STRING",
+              "value": "view"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "command_args"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "command_name"
+          }
+        }
+      ]
+    },
+    "spanning_tree_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "spanning-tree"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "mode"
+            },
+            {
+              "type": "STRING",
+              "value": "vlan"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "command_args"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "command_name"
+          }
+        }
+      ]
+    },
+    "tacacs_server_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "tacacs-server"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "host"
+            },
+            {
+              "type": "STRING",
+              "value": "key"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "command_args"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "command_name"
+          }
+        }
+      ]
+    },
+    "vlan_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "vlan"
+        },
+        {
+          "type": "FIELD",
+          "name": "id",
+          "content": {
+            "type": "PATTERN",
+            "value": "\\d+"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "vlan_name"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "command_name"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "vlan_name": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "name"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "command_args"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "vrf_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "vrf"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "definition"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "name"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "command_name"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "vrf_address_family_section"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "vrf_address_family_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "address-family"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "ipv4"
+            },
+            {
+              "type": "STRING",
+              "value": "ipv6"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "unicast"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "command_name"
+          }
+        }
+      ]
+    }
+  },
+  "extras": [
+    {
+      "type": "PATTERN",
+      "value": "\\s"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "comment"
+    }
+  ],
+  "conflicts": [
+    [
+      "command_name"
+    ],
+    [
+      "aaa_section"
+    ],
+    [
+      "interface_section"
+    ],
+    [
+      "ntp_section"
+    ],
+    [
+      "router_bgp_section"
+    ],
+    [
+      "vlan_section"
+    ],
+    [
+      "vrf_section"
+    ],
+    [
+      "class_map_section"
+    ],
+    [
+      "management_section"
+    ],
+    [
+      "policy_map_section"
+    ],
+    [
+      "router_ospf_section"
+    ],
+    [
+      "service_section"
+    ],
+    [
+      "spanning_tree_section"
+    ],
+    [
+      "acl_section"
+    ],
+    [
+      "ip_section"
+    ],
+    [
+      "ipv6_section"
+    ],
+    [
+      "tacacs_server_section"
+    ],
+    [
+      "key_section"
+    ],
+    [
+      "monitor_section"
+    ],
+    [
+      "snmp_server_section"
+    ],
+    [
+      "vrf_address_family_section"
+    ],
+    [
+      "policy_map_class_section"
+    ],
+    [
+      "management_api_vrf_section"
+    ]
+  ],
+  "precedences": [],
+  "externals": [],
+  "inline": [],
+  "supertypes": []
+}

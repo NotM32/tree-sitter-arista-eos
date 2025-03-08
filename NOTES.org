@@ -1,0 +1,16 @@
+#+title: Notes on EOS syntax styles
+
+* Configuration Sections
+The easiest way to implement recognition of a sectional command
+is to read whitespace, and assume either a '!' token encountered
+or a de-indent as the section end
+
+However the arguably more correct way also brings about some issues
+with the variety found between vendor implementations. NX-OS for instance,
+has a much more hierarchial BGP configuration than EOS, FRR and IOS. As
+a result, there will be differences in the commands and the need to implement
+dialects may emerge.
+
+For now, we will take a split path approach and support whitespaced section
+recognition as a choice alongside token specific sections for majorly similar
+commands, like route-map declarations and the router instance lead in.
